@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'colors.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,47 +12,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Sidebar Flutter'),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text('Sidebar Header'),
+      home: Scaffold(
+        body: Container(
+          color: AppColors.baseBackgroundColor,
+          padding: EdgeInsets.all(width * 0.01),
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.black, width: 1.0),
             ),
-            ListTile(
-              title: Text('Item 1'),
-              onTap: () {
-                // Handle item 1 tap
-              },
-            ),
-            ListTile(
-              title: Text('Item 2'),
-              onTap: () {
-                // Handle item 2 tap
-              },
-            ),
-          ],
+          ),
         ),
-      ),
-      body: Center(
-        child: Text('Content of the page'),
       ),
     );
   }
