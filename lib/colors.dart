@@ -14,4 +14,5 @@ class AppColors {
   static const Color primaryText = Color(0xFF393E46);
   static const Color gray = Color(0xFFF6F7F9);
   static const Color titleColor = Color(0xFF7A808D);
+  static const Color redAccent = Color(0xFFEF6262);
 }
