@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'colors.dart';
 import 'sidebar.dart';
+import 'pos-pembayaran.dart';
 
 void main() {
   runApp(const MyApp());

@@ -3,6 +3,7 @@ import 'colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:math';
+import 'pos-pembayaran.dart';
 
 class Sidebar extends StatefulWidget {
   const Sidebar({
@@ -31,21 +32,29 @@ class _SidebarState extends State<Sidebar> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+    double globalPadding = screenWidth * 0.01;
 
     return Stack(
       clipBehavior: Clip.none,
+      fit: StackFit.loose,
+      alignment: Alignment.topLeft,
       children: [
-        AnimatedContainer(
+        Row(
+          children: [
+            SizedBox(width: screenWidth * 0.075,),
+            Container(
+              width: (widget.screenWidth - globalPadding * 2) - screenWidth * 0.075,
+              height: widget.screenHeight,
+              child: PosPembayaran(screenHeight: screenHeight, screenWidth: screenWidth,),
+            ),
+          ],
+        ),
+        AnimatedPositioned(
           curve: Curves.fastOutSlowIn,
           width: isExpanded ? screenWidth * 0.2 : screenWidth * 0.05,
           duration: Duration(milliseconds: 200),
-          decoration: BoxDecoration(
-            color: AppColors.mainColorPurple,
-            borderRadius: BorderRadius.circular(16),
-          ),
           child: Container(
-            width: widget.screenWidth * 0.05,
-            height: widget.screenHeight,
+            height: screenHeight - globalPadding * 2,
             decoration: BoxDecoration(
               color: AppColors.mainColorPurple,
               borderRadius: BorderRadius.circular(16),
@@ -64,7 +73,7 @@ class _SidebarState extends State<Sidebar> {
                         children: [
                           SvgPicture.asset(
                             'assets/icons/nav-side-logo.svg',
-                            width: 36,
+                            width: screenWidth * 0.026385,
                           ),
                           SizedBox(width: 20),
                           Text(
@@ -86,7 +95,7 @@ class _SidebarState extends State<Sidebar> {
                         children: [
                           SvgPicture.asset(
                             'assets/icons/nav-side-logo.svg',
-                            width: 36,
+                            width: screenWidth * 0.026385,
                           ),
                         ],
                       ),
@@ -103,7 +112,7 @@ class _SidebarState extends State<Sidebar> {
                             children: [
                               SvgPicture.asset(
                                 'assets/icons/nav-side-home.svg',
-                                width: 32,
+                                width: screenWidth * 0.023439,
                               ),
                               SizedBox(width: 20),
                               Text(
@@ -121,7 +130,7 @@ class _SidebarState extends State<Sidebar> {
                             children: [
                               SvgPicture.asset(
                                 'assets/icons/nav-side-pos-pembayaran.svg',
-                                width: 32,
+                                width: screenWidth * 0.023439,
                               ),
                               SizedBox(width: 20),
                               Text(
@@ -149,7 +158,7 @@ class _SidebarState extends State<Sidebar> {
                             children: [
                               SvgPicture.asset(
                                 'assets/icons/nav-side-home.svg',
-                                width: 32,
+                                width: screenWidth * 0.023439,
                               ),
                             ],
                           ),
@@ -158,7 +167,7 @@ class _SidebarState extends State<Sidebar> {
                             children: [
                               SvgPicture.asset(
                                 'assets/icons/nav-side-pos-pembayaran.svg',
-                                width: 32,
+                                width: screenWidth * 0.023439,
                               ),
                             ],
                           ),
@@ -230,7 +239,7 @@ class _SidebarState extends State<Sidebar> {
                             children: [
                               SvgPicture.asset(
                                 'assets/icons/nav-side-logout.svg',
-                                width: 24,
+                                width: 28,
                               ),
                             ],
                           ),
@@ -262,6 +271,7 @@ class _SidebarState extends State<Sidebar> {
                 alignment: Alignment.center,
                 child: SvgPicture.asset(
                   'assets/icons/arrow-chevron-right.svg',
+                  // ignore: deprecated_member_use
                   color: AppColors.mainColorPurple,
                   width: 8,
                 ),
