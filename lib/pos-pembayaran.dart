@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PosPembayaran extends StatelessWidget {
-  const PosPembayaran({
+  PosPembayaran({
     super.key,
     required this.screenWidth,
     required this.screenHeight,
@@ -12,6 +12,34 @@ class PosPembayaran extends StatelessWidget {
 
   final double screenWidth;
   final double screenHeight;
+  List<Map<String, dynamic>> tableTitle = [
+    {
+      'title': 'Kode',
+    },
+    {
+      'title': 'Nama Pos Pembayaran',
+    },
+    {
+      'title': 'Cicilan Tetap',
+    },
+    {
+      'title': 'Berapa Kali',
+    },
+  ];
+  List<Map<String, dynamic>> tableData = [
+    {
+      'kode': 1,
+      'nama-pos-pembayaran': 'SPP',
+      'cicilan-tetap': true,
+      'berapa kali': '12',
+    },
+    {
+      'kode': 2,
+      'nama-pos-pembayaran': 'DSP',
+      'cicilan-tetap': false,
+      'berapa kali': '1',
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +72,7 @@ class PosPembayaran extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                   ),
                 ),
-                SizedBox(width: 48),
+                const SizedBox(width: 48),
                 Container(
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
@@ -234,6 +262,51 @@ class PosPembayaran extends StatelessWidget {
                       ),
                     ],
                   ),
+                ],
+              ),
+              SizedBox(height: 50),
+              // Data Euy
+              Table(
+                // border:
+                // TableBorder.all(width: 0, color: AppColors.primaryText),
+                children: [
+                  TableRow(
+                    children: tableTitle.map((data) {
+                      return Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: AppColors.gray,
+                        ),
+                        child: TableCell(
+                          child: Text(
+                            "${data['title']}",
+                            style: GoogleFonts.poppins(
+                              color: AppColors.titleColor,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                  ...tableData.map((data) {
+                    return TableRow(
+                      children: data.values.map((value) {
+                        return Container(
+                          padding: EdgeInsets.all(10),
+                          child: TableCell(
+                            child: Text(
+                              value.toString(),
+                              style: GoogleFonts.poppins(
+                                color: AppColors.primaryText,
+                              ),
+                            ),
+                          ),
+                        );
+                      }).toList(),
+                    );
+                  }).toList(),
                 ],
               ),
             ],

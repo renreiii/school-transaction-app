@@ -41,11 +41,17 @@ class _SidebarState extends State<Sidebar> {
       children: [
         Row(
           children: [
-            SizedBox(width: screenWidth * 0.075,),
+            SizedBox(
+              width: screenWidth * 0.075,
+            ),
             Container(
-              width: (widget.screenWidth - globalPadding * 2) - screenWidth * 0.075,
+              width: (widget.screenWidth - globalPadding * 2) -
+                  screenWidth * 0.075,
               height: widget.screenHeight,
-              child: PosPembayaran(screenHeight: screenHeight, screenWidth: screenWidth,),
+              child: PosPembayaran(
+                screenHeight: screenHeight,
+                screenWidth: screenWidth,
+              ),
             ),
           ],
         ),
@@ -186,7 +192,7 @@ class _SidebarState extends State<Sidebar> {
                             children: [
                               SvgPicture.asset(
                                 'assets/icons/nav-side-cog.svg',
-                                width: 28,
+                                width: screenWidth * 0.0205,
                               ),
                               SizedBox(width: 20),
                               Text(
@@ -203,7 +209,7 @@ class _SidebarState extends State<Sidebar> {
                             children: [
                               SvgPicture.asset(
                                 'assets/icons/nav-side-logout.svg',
-                                width: 28,
+                                width: screenWidth * 0.0205,
                               ),
                               SizedBox(width: 20),
                               Text(
@@ -231,7 +237,7 @@ class _SidebarState extends State<Sidebar> {
                             children: [
                               SvgPicture.asset(
                                 'assets/icons/nav-side-cog.svg',
-                                width: 28,
+                                width: screenWidth * 0.0205,
                               ),
                             ],
                           ),
@@ -239,7 +245,7 @@ class _SidebarState extends State<Sidebar> {
                             children: [
                               SvgPicture.asset(
                                 'assets/icons/nav-side-logout.svg',
-                                width: 28,
+                                width: screenWidth * 0.0205,
                               ),
                             ],
                           ),
